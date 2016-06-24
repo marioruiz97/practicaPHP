@@ -59,9 +59,9 @@
                      * @var string $tabla, variable que imprime en el navegador la tabla
                      */
                     $directorio = array(
-                        "usuario1" => array("nombre" => "Mario Ruiz", "direccion" => "calle 123", "telefono" => 310254, "color" => "Verde"),
-                        "usuario2" => array("nombre" => "Alberto Gutierrez", "direccion" => "carrera 1", "telefono" => 1234, "color" => "Azul"),
-                        "usuario3" => array("nombre" => "Andrés Bedoya", "direccion" => "avenida 80", "telefono" => 23085, "color" => "Rojo"),
+                        array("nombre" => "Mario Ruiz", "direccion" => "calle 123", "telefono" => 310254, "color" => "Verde"),
+                        array("nombre" => "Alberto Gutierrez", "direccion" => "carrera 1", "telefono" => 1234, "color" => "Azul"),
+                        array("nombre" => "Andrés Bedoya", "direccion" => "avenida 80", "telefono" => 23085, "color" => "Rojo"),
                     );
 
                     $colores = array(
