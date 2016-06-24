@@ -42,138 +42,140 @@
 
             <section class="w3-row">
                 <article class="w3-container w3-center">
-                        <?php
-                        /**
-                         * @author Mario Andrés Ruiz Bedoya <Marioarb.97@gmail.com>
-                         * Este código está implementado sobre arrays, se crea un arreglo directorio, 
-                         * un arreglo colores y una variable tabla que permite mostrar todo en el
-                         * navegador. Despues el directorio es impreso por el navegador
-                         * 
-                         * Implementado para el curso de desarrollo web con PHP
-                         * Evidencia de aprendizaje número 2
-                         */
-                        
-                        /**
-                         * Declaración de variables globales
-                         * @var array $directorio, arreglo con el directorio de usuarios a imprimir
-                         * @var array $colores, arreglo con el significado de los colores
-                         * @var string $tabla, variable que imprime en el navegador la tabla
-                         */
-                        $directorio = array(
-                            array("nombre" => "Mario Ruiz", "direccion" => "calle 123", "telefono" => 310254, "color" => "Verde"),
-                            array("nombre" => "Alberto Gutierrez", "direccion" => "carrera 1", "telefono" => 1234, "color" => "Azul"),
-                            array("nombre" => "Andrés Bedoya", "direccion" => "avenida 80", "telefono" => 23085, "color" => "Rojo"),
-                        );
+                    <?php
+                    /**
+                     * @author Mario Andrés Ruiz Bedoya <Marioarb.97@gmail.com>
+                     * Este código está implementado sobre arrays, se crea un arreglo directorio, 
+                     * un arreglo colores y una variable tabla que permite mostrar todo en el
+                     * navegador. Despues el directorio es impreso por el navegador
+                     * 
+                     * Implementado para el curso de desarrollo web con PHP
+                     * Evidencia de aprendizaje número 2
+                     */
+                    /**
+                     * Declaración de variables globales
+                     * @var array $directorio, arreglo con el directorio de usuarios a imprimir
+                     * @var array $colores, arreglo con el significado de los colores
+                     * @var string $tabla, variable que imprime en el navegador la tabla
+                     */
+                    $directorio = array(
+                        "usuario1" => array("nombre" => "Mario Ruiz", "direccion" => "calle 123", "telefono" => 310254, "color" => "Verde"),
+                        "usuario2" => array("nombre" => "Alberto Gutierrez", "direccion" => "carrera 1", "telefono" => 1234, "color" => "Azul"),
+                        "usuario3" => array("nombre" => "Andrés Bedoya", "direccion" => "avenida 80", "telefono" => 23085, "color" => "Rojo"),
+                    );
 
-                        $colores = array(
-                            "Amarillo" => "Riqueza y alegria",
-                            "Azul" => "Tranquilidad y Serenidad",
-                            "Rojo" => "Amor y pasión"
-                        );
+                    $colores = array(
+                        "Amarillo" => "Riqueza y alegria",
+                        "Azul" => "Tranquilidad y Serenidad",
+                        "Rojo" => "Amor y pasión"
+                    );
 
-                        $tabla;
+                    $tabla;
 
-                        /**
-                         * Esta función crea los títulos ubicados en la cabecera de la tabla.
-                         * 
-                         * @global type $tabla, crea la variable global tabla para modificar la del ámbito
-                         * externo de la función.
-                         */
-                        function cabecera() {
-                            global $tabla;
-                            
-                            $tabla .= "<table class=\"w3-table-all w3-centered\">";
+                    /**
+                     * Esta función crea los títulos ubicados en la cabecera de la tabla.
+                     * 
+                     * @global type $tabla, crea la variable global tabla para modificar la del ámbito
+                     * externo de la función.
+                     */
+                    function cabecera() {
+                        global $tabla;
 
-                            $tabla .= "<tr class=\"w3-black\">";
-                            $tabla .= "<th>" . "Nombre" . "</th>";
-                            $tabla .= "<th>" . "Direccion" . "</th>";
-                            $tabla .= "<th>" . "Telefono" . "</th>";
-                            $tabla .= "<th>" . "Color" . "</th>";
-                            $tabla .= "<th>" . "Significado" . "</th>";
-                            $tabla .= "</tr>";
-                        }
+                        $tabla .= "<table class=\"w3-table-all w3-centered\">";
 
-                        /**
-                         * Esta función "crea" un registro de la tabla, seguido de esto le asigna a la última
-                         * columna (significado del color) su valor llamando la función significado
-                         * 
-                         * @global type $tabla, variable que permite modificar la variable global tabla
-                         * @global array $directorio, variable que permite trabajar con el arreglo global directorio
-                         * @param type $numUsuario, recibe por parámetro el número del usuario a modificar 
-                         */
-                        function imprimirUsuario($numUsuario) {
-                            global $tabla;
-                            global $directorio;
-                            $color = $directorio[$numUsuario]["color"];
+                        $tabla .= "<tr class=\"w3-black\">";
+                        $tabla .= "<th>" . "Nombre" . "</th>";
+                        $tabla .= "<th>" . "Dirección" . "</th>";
+                        $tabla .= "<th>" . "Teléfono" . "</th>";
+                        $tabla .= "<th>" . "Color" . "</th>";
+                        $tabla .= "<th>" . "Significado" . "</th>";
+                        $tabla .= "</tr>";
+                    }
 
+                    /**
+                     * Esta función "crea" un registro de la tabla, seguido de esto le asigna a la última
+                     * columna (significado del color) su valor llamando la función significado
+                     * 
+                     * @global type $tabla, variable que permite modificar la variable global tabla
+                     * @global array $directorio, variable que permite trabajar con el arreglo global directorio
+                     * @param type $numUsuario, recibe por parámetro el número del usuario a modificar 
+                     */
+                    function imprimirUsuario() {
+                        global $tabla;
+                        global $directorio;
+                        $user = 0;
+
+                        foreach ($directorio as $usuario) {
+                            $color = $directorio[$user]["color"];
                             $tabla .="<tr>";
+                            foreach ($usuario as $datos) {
 
-                            foreach ($directorio as $usuario) {
-                                //linea 113 con el error de offset
-                                $tabla .="<td>" . $directorio[$numUsuario][$usuario] . "</td>";
+                                $tabla .="<td>" . $datos . "</td>";
                             }
 
-                            significado($color);
-
+                            if (!empty($color)) {
+                                significado($color);
+                            } else {
+                                $tabla.="<td>" . "Campo color vacío" . "</td>";
+                            }
                             $tabla .="</tr>";
+                            $user++;
                         }
+                    }
 
-                        /**
-                         * Esta función recibe como parámetro el valor del color a comparar,
-                         * despues en la estructura switch asigna el valor correspondiente tomado del
-                         * arreglo global $colores.
-                         * 
-                         * @global type $tabla
-                         * @global array $colores
-                         * @param type $color 
-                         */
-                        function significado($color) {
-                            global $tabla;
-                            global $colores;
+                    /**
+                     * Esta función recibe como parámetro el valor del color a comparar,
+                     * despues en la estructura switch asigna el valor correspondiente tomado del
+                     * arreglo global $colores.
+                     * 
+                     * @global type $tabla
+                     * @global array $colores
+                     * @param type $color 
+                     */
+                    function significado($color) {
+                        global $tabla;
+                        global $colores;
 
-                            switch ($color) {
-                                case "Amarillo":
-                                    $tabla .="<td>" . $colores["Amarillo"] . "</td>";
-                                    break;
-                                case "Azul":
-                                    $tabla .="<td>" . $colores["Azul"] . "</td>";
-                                    break;
-                                case "Rojo":
-                                    $tabla .="<td>" . $colores["Rojo"] . "</td>";
-                                    break;
-                                default :
-                                    $tabla .="<td>" . "No se encuentra el color" . "</td>";
-                                    break;
-                            }
+                        switch ($color) {
+                            case "Amarillo":
+                                $tabla .="<td>" . $colores["Amarillo"] . "</td>";
+                                break;
+                            case "Azul":
+                                $tabla .="<td>" . $colores["Azul"] . "</td>";
+                                break;
+                            case "Rojo":
+                                $tabla .="<td>" . $colores["Rojo"] . "</td>";
+                                break;
+                            default :
+                                $tabla .="<td>" . "No se encuentra el color" . "</td>";
+                                break;
                         }
+                    }
 
-                        /**
-                         * Esta función crea la tabla 
-                         * crea la cabecera
-                         * crea los 3 registros del array global $directorio
-                         * imprime tabla en el navegador
-                         * 
-                         * @global array $directorio
-                         */
-                        function crearTabla() {
-                            global $directorio;
-                            global $tabla;
-                            $tamaño = sizeof($directorio);
-                            
-                            //crear cabecera de la tabla
-                            cabecera();
+                    /**
+                     * Esta función crea la tabla 
+                     * crea la cabecera
+                     * crea los 3 registros del array global $directorio
+                     * imprime tabla en el navegador
+                     * 
+                     * @global array $directorio
+                     */
+                    function crearTabla() {
+                        global $tabla;
 
-                            for ($i = 0; $i < $tamaño; $i++) {
-                                imprimirUsuario($i);
-                            }
-                            
-                            //Cerrar etiqueta table e Imprimir tabla en el navegador
-                            $tabla .= "</table>";
-                            echo $tabla;
-                        }
-                        
-                        crearTabla();
-                        ?>
+                        //crear cabecera de la tabla
+                        cabecera();
+
+                        //crear los registros en la tabla
+                        imprimirUsuario();
+
+                        //Cerrar etiqueta table e Imprimir tabla en el navegador
+                        $tabla .= "</table>";
+                        echo $tabla;
+                    }
+
+                    crearTabla();
+                    ?>
                 </article>
             </section>
 
