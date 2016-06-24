@@ -173,7 +173,9 @@
                         $tabla .= "</table>";
                         echo $tabla;
                     }
-
+                    
+                    //Esta línea de código se encarga de ejecutar las funciones que
+                    //Permiten mostrar los datos tabulados en el navegador
                     crearTabla();
                     ?>
                 </article>
